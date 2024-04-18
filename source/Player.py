@@ -1,24 +1,22 @@
 import random
 
 class Player:
-    def __init__(self, id: int, num_dice: int) -> None:
+    def __init__(self, id: int) -> None:
         self._id = id
         self._name = self.__get_player_name()
         self._dice_arr = [0 for _ in range(6)]
         self._curr_dice = 1
-        self._dice_to_take = num_dice - 1
 
     def roll(self) -> None:
         self._dice_arr = [0 for _ in range(6)]
         for i in range(self._curr_dice):
             self._dice_arr[random.randint(0, 5)] += 1
 
-    def take(self) -> None:
-        self._curr_dice += 1
-        self._dice_to_take -= 1
+    def discard_die(self) -> None:
+        self._curr_dice -= 1
         
     def is_out(self) -> bool:
-        return self._dice_to_take == -1
+        return self._curr_dice==0
     
     def get_dice(self, dice: int) -> int:
         return self._dice_arr[dice - 1]
@@ -62,7 +60,7 @@ class Player:
         elif curr_bet[1] != 1 and prev_bet[1] == 1:
             return curr_bet[0] > prev_bet[0] * 2
         else:
-            return curr_bet[0] > prev_bet[0] or curr_bet[1] > prev_bet[1]
+            return curr_bet[0] > prev_bet[0] or (curr_bet[1] > prev_bet[1] and curr_bet[0] == prev_bet[0])
 
 
 
