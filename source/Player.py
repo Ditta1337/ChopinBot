@@ -5,7 +5,7 @@ class Player:
         self._id = id
         self._name = self.__get_player_name()
         self._dice_arr = [0 for _ in range(6)]
-        self._curr_dice = 1
+        self._curr_dice = 5
 
     def roll(self) -> None:
         self._dice_arr = [0 for _ in range(6)]
