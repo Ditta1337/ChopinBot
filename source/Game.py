@@ -45,13 +45,16 @@ class Game:
     def __sum_dice(self) -> bool:
         dice_number = 0
         for player in self._players:
-            dice_number += player.get_dice(self._prev_bet[1])
+            dice_number += player.get_dice(1)
+            if self._prev_bet[1] != 1:
+                dice_number += player.get_dice(self._prev_bet[1])
 
         return dice_number
     
     def __take_die(self, player_num: int) -> None:
         self._turn = 0
         self._prev_bet = None
+        # TODO: index out of range
         self._players[player_num].take()
         print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
         print("Gracz " + self._players[player_num].get_name() + " dobiera kość!\nMa teraz " + str(self._players[player_num].get_curr_dies()) + " kości")

@@ -24,27 +24,24 @@ class Player:
         return self._dice_arr[dice - 1]
     
     def take_turn(self, is_first: bool, prev_bet: tuple[int, int]) -> tuple[int, int]:
-        try:
-            while True:
-                print(f"{self._name} rzut: {self._dice_arr}\n")
-                first_input, success = self.__input_to_int("-1: dokładnie\n0: sprawdzam\n>0: ilość kości \n")
-                if not success or first_input < -1 or (first_input < 1 and is_first):
-                    print("niepoprawny input!")
-                    continue
-                if first_input < 1:
-                    return (first_input, -1)
-                second_input, success = self.__input_to_int("podaj ilość oczek: \n")
-                if second_input < 1 or second_input > 6:
-                    print("niepoprawny input!")
-                    continue
-                potetnial_bet = (first_input, second_input)
-                if self.__check_bet_val_idity(potetnial_bet, prev_bet):
-                    return potetnial_bet
-                else:
-                    print("niepoprawny bet!\n")
-        except KeyboardInterrupt:
-            print("przerwano grę!\n")
-            exit(0)
+        while True:
+            print(f"{self._name} rzut: {self._dice_arr}\n")
+            first_input, success = self.__input_to_int("-1: dokładnie\n0: sprawdzam\n>0: ilość kości \n")
+            if not success or first_input < -1 or (first_input < 1 and is_first):
+                print("niepoprawny input!")
+                continue
+            if first_input < 1:
+                return (first_input, -1)
+            second_input, success = self.__input_to_int("podaj ilość oczek: \n")
+            if second_input < 1 or second_input > 6:
+                print("niepoprawny input!")
+                continue
+            potetnial_bet = (first_input, second_input)
+            if self.__check_bet_validity(potetnial_bet, prev_bet):
+                return potetnial_bet
+            else:
+                print("niepoprawny bet!\n")
+    
 
     def get_curr_dies(self) -> int:
         return self._curr_dice
@@ -52,7 +49,7 @@ class Player:
     def get_name(self) -> str:
         return self._name
 
-    def __check_bet_val_idity(self, curr_bet: tuple[int, int], prev_bet: tuple[int, int]) -> bool:
+    def __check_bet_validity(self, curr_bet: tuple[int, int], prev_bet: tuple[int, int]) -> bool:
         if prev_bet == None:
             return True
         if curr_bet[1] == 1 and prev_bet[1] != 1:

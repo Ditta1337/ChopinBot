@@ -1,8 +1,12 @@
 from Game import Game
 
-def play_game(num_players: int, num_dice: int) -> None:
+def play_game(num_players: int, num_dice: int) -> str:
     game = Game(num_players, num_dice)
-    return game.play()
+    try :
+        return game.play()
+    except KeyboardInterrupt:
+        print("przerwano grę!")
+        exit(0)
 
 if __name__ == "__main__":
     while True:
