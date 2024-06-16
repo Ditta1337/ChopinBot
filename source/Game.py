@@ -11,6 +11,9 @@ class Game:
         self._prev_player = None
         self._turn = 0
         self._prev_bet = None
+        #TODO:
+        self.model=None
+        self.player=None
 
     def play(self) -> str:
         while self._num_players != 1:

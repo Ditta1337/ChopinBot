@@ -44,9 +44,10 @@ def calc_args():
     return D_PUB, D_PRI, N_ACTIONS, LIE_ACTION, CUR_INDEX, PRI_INDEX, D_PUB_PER_PLAYER
 
 class Game:
-    def __init__(self, model):
+    def __init__(self, model,liczba_kosci_gracza_1,liczba_kosci_gracza_2):
         self.model = model
-        self.D1 = self.D2 = 5
+        self.D1 = liczba_kosci_gracza_1
+        self.D2 =liczba_kosci_gracza_2
         self.SIDES = 6
         self.VARIANT = "joker"
 
