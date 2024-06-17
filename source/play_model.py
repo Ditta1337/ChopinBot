@@ -34,9 +34,9 @@ model(dummy_data_inputs, dummy_data_pub)
 model.load_weights(args)
 
 class Sieman():
-    def play_turn(self,kosci1,kosci2):
+    def play_turn(self):
 
-        game = Game(model,kosci1,kosci2)
+        game = Game(model)
 
 
         class Human:
