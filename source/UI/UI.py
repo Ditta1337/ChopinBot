@@ -2,7 +2,7 @@ import pygame
 from sys import exit
 from .Button import Button
 from .TextInput import TextInput
-from source.snyd import *
+from model import *
 import re
 class UI:
     screen_width = 800
@@ -16,7 +16,7 @@ class UI:
     __robot_dice = []
     def initialize(self):
 
-        args = r"C:\studia\semestr4\biologiczne\ChopinBot\source\model.h5"
+        args = "source/model.h5"
 
         train_args = {
             'd1': 3,
@@ -177,7 +177,7 @@ class UI:
                 else:
                     self.__text_input.add_letter(event.unicode)
     def __load_images(self):
-        partial_path = "resources/"
+        partial_path = "source/resources/"
         for i in range(1,7):
             path = partial_path + str(i) + ".png"
             self.__images.append(pygame.image.load(path))

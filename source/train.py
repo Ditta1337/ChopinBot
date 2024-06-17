@@ -1,7 +1,7 @@
 import random
 import tensorflow as tf
 
-from snyd import *
+from source.model import *
 
 model = NetConcat()
 game = Game(model)

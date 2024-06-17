@@ -4,7 +4,7 @@ import itertools
 import argparse
 import re
 import tensorflow as tf
-from snyd import *
+from source.model import *
 
 # model_path_v1=r"C:\studia\semestr4\biologiczne\ChopinBot\source\model.h5"
 
